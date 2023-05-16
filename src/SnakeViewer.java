@@ -4,18 +4,15 @@ import java.awt.event.KeyEvent;
 import java.awt.event.KeyListener;
 import javax.swing.JFrame;
 public class SnakeViewer extends JFrame{
-    private int width;
-    private int height;
+    private int width = 500;
+    private int height = 500;
+    private snakeAnimal animal;
 
-    private Snake backend;
 
-
-    public SnakeViewer(int MAX_WIDTH, int MAX_HEIGHT, Snake backend)
+    public SnakeViewer(snakeAnimal animal)
     {
-        width = MAX_WIDTH;
-        height = MAX_HEIGHT;
-        this.backend = backend;
-
+        //this.backend = backend;
+        this.animal = animal;
         this.setTitle("SNAKE GAME!");
         this.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         this.setSize(width, height);
@@ -23,15 +20,11 @@ public class SnakeViewer extends JFrame{
     }
     public void paint(Graphics g)
     {
-        g.setColor(Color.white);
-        g.fillRect(0, 0, width, height);
-        backend.getBackgnd().draw(g, this);
-        backend.getApple().draw(g, this);
-        backend.getSnakeBody().draw(g, this);
-        backend.getSnakeFace().draw(g, this);
-
-
+        g.setColor(Color.black);
+        g.fillRect(0, 0, 500, 500);
+        animal.draw(g);
     }
+
     //public void keyPressed(KeyEvent e)              // #7 Required for KeyListener
     //{
         // The keyCode lets you know which key was pressed
